@@ -72,8 +72,6 @@ struct Time time_value(char *line){
 
 void getInformation(char *line,struct Event *event){
   
-    //printf("%s\n",line);
-    //printf("%s\n",(char*)string_value(line));
     if(strstr(line,"<description>")){
       strcpy(event->description,string_value(line));    
     }
@@ -156,7 +154,6 @@ int compare(const void *e1, const void *e2) {
 }
 
 int smaller_than(struct Event *event1,int year, int month, int day){ // Checks if date is smaller than second date
-  //printf("%d - %d - %d compared to : %d - %d - %d \n",event1->year,event1->month,event1->day,year,month,day);
   if (event1->year < year) return 0;
   if (event1->year == year && event1->month < month) return 0;
   if (event1->year == year && event1->month == month && event1->day <= day) return 0;
@@ -226,10 +223,7 @@ void output_events(char start[], char end[],int num_of_events, struct Event *eve
     "November",
     "December"};
 
-  //printf("%d,%d,%d\n%d,%d,%d\n",syear,smonth,sday,eyear,emonth,eday);
-
   qsort(event_arr, num_of_events, sizeof(struct Event), compare);
-  //printf("%d\n",num_of_events);
 
   int x = 0; // Counter for events in a row
 
@@ -287,7 +281,6 @@ int main(int argc, char *argv[])
   int num_of_events = parse_file(file_name,event_arr);
 
   output_events(startdate,enddate,num_of_events,event_arr);
-  //printf("%s \n %s\n %s\n",startdate,enddate,file_name);
 
 
   exit(0);
