@@ -252,14 +252,14 @@ void output_events(char start[], char end[],int num_of_events, struct Event *eve
 
         print_event(&event_arr[x]);
 
-        if ((x+1)< num_of_events && smaller_than(&event_arr[x+1],eyear,emonth,eday) != 1)printf("\n");
+        printf("\n");
         x++;
 
 
       } while(equals(&event_arr[x-1],&event_arr[x]) == 0);
       
 
-      if(x < num_of_events && smaller_than(&event_arr[x],eyear,emonth,eday) == 0)printf("\n"); //Prints gap in between dates
+      printf("\n"); //Prints gap in between dates
       
       if (x == num_of_events){
         break; // Breaks loop
@@ -275,9 +275,6 @@ void output_events(char start[], char end[],int num_of_events, struct Event *eve
 
 int main(int argc, char *argv[])
 {
-    /* Starting calling your own code from this point. */
-    // Ideally, please try to decompose your solution into multiple functions that are called from a concise main() function.
-   
   struct Event event_arr[MAX_EVENTS];
 
   char* startdate = strchr(argv[1], '=');
